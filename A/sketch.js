@@ -27,6 +27,7 @@ function setup() {
 function draw() {
 	background(0);
 
+	// TODO try and rotate text on torus:
 	// Add text to the texture
 	// let wave = (sin(frameCount * 0.005 + (0.005) * 0.005) * 1);
 	// textTexture.background(10);
