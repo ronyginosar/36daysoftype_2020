@@ -5,7 +5,7 @@
 // todo - group behaviors?
 
 
-let particlesize = 40;
+// let particlesize = 40;
 var fleecondition = 50;
 
 function Vehicle(x,y){

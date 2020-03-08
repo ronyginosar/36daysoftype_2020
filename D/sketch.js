@@ -2,11 +2,12 @@ let vehicles = [];
 var font;
 let letterSize = 400;
 let letter = 'd';
-let spread = 3;
+let spread = 12;
 let lettermask;
 let spots = [];
 let mwindowWidth;
 let mwindowHeight;
+let particlesize = 30; // little letters
 
 function preload() {
 	font = loadFont('assets/Caladea-Bold.ttf');
@@ -14,31 +15,26 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-	pixelDensity(1); // THE HOLY GRAIL! retina o.w scales up...
+	// pixelDensity(1); // THE HOLY GRAIL! retina o.w scales up...
+	// but lowes quality. so...
+	d = pixelDensity();
+	// console.log(d);
 	textFont(font);
 	let locx = windowWidth*2/7;
 	let locy = windowHeight*6/8;
 
-	// C letter
-	// stroke(255);
-	// strokeWeight(1);
-	// noFill();
-	// textFont(font);
-	// textSize(800);
-	// text('C', 100, 700);
-
-	// C letter mask for paving
+	// D letter mask for paving
 	lettermask = createGraphics(windowWidth, windowHeight);
 	lettermask.textFont(font);
-	lettermask.textSize(letterSize);
+	lettermask.textSize(letterSize/d);
 	lettermask.fill(255);
-	lettermask.text(letter, locx , locy);
+	lettermask.text(letter, locx/d , locy/d);
 	lettermask.loadPixels();
 
 
-	for (var i = 0 ; i < lettermask.width ; i+= 10){
-		for (var j = 0 ; j < lettermask.height ; j+= 10){
-			index = i+j*lettermask.width;
+	for (var i = 0 ; i < lettermask.width ; i+= spread){
+		for (var j = 0 ; j < lettermask.height ; j+= spread){
+			index = i+j*lettermask.width*d;
 			var c = lettermask.pixels[index*4];
 			var b = brightness(c);
 			if (b > 1) {
@@ -48,16 +44,6 @@ function setup() {
 			}
 		}
 	}
-	// C letter shape
-	// cbounds = font.textToPoints(letter, locx, locy, letterSize);
-	// for (var i = 0 ; i < cbounds.length ; i+=spread){
-	// 	var b = cbounds[i];
-	// 	var vehicle = new Vehicle(b.x, b.y);
-	// 	vehicles.push(vehicle);
-	// 	// stroke(255);
-	// 	// strokeWeight(4);
-	// 	// point(b.x, b.y);
-	// }
 }
 
 
