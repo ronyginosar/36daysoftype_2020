@@ -22,20 +22,20 @@ function Vehicle(x,y){
 }
 
 Vehicle.prototype.behaviors = function(){
-  // var seek = this.seek(this.target);
-  // this.applyForce(seek);
+  var seek = this.seek(this.target); // seek&arrive already do jitter
   var arrive = this.arrive(this.target);
   var mouse = createVector(mouseX,mouseY);
   var flee = this.flee(mouse);
 
   // weights
-  arrive.mult(1);
-  flee.mult(5);
+  arrive.mult(0.2);
+  flee.mult(7);
+  seek.mult(0.5);
 
   this.applyForce(arrive);
   this.applyForce(flee);
+  this.applyForce(seek);
 
-  // todo Add Jitter
 }
 
 // add forces to acceleration, accumulates
@@ -46,6 +46,10 @@ Vehicle.prototype.applyForce = function(f){
 // todo read more about prototype
 Vehicle.prototype.update = function(){
   this.pos.add(this.vel);
+  // Additional Jitter:
+  // var s = 1;
+  // this.pos.add(createVector(random(-s, s),random(-s, s)));
+
   this.vel.add(this.acc);
   // clear acceleration
   this.acc.mult(0);

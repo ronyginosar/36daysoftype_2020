@@ -1,16 +1,16 @@
 let vehicles = [];
 var font;
-let letterSize = 400;
-let letter = 'd';
-let spread = 12;
+let letterSize = 600;
+let letter = 'e';
+let spread = 15;
 let lettermask;
 let spots = [];
 let mwindowWidth;
 let mwindowHeight;
-let particlesize = 30; // little letters
+let particlesize = 20; // little letters
 
 function preload() {
-	font = loadFont('assets/Caladea-Bold.ttf');
+	font = loadFont('assets/Alegreya-ExtraBoldItalic.ttf');
 }
 
 function setup() {
@@ -20,20 +20,20 @@ function setup() {
 	d = pixelDensity();
 	// console.log(d);
 	textFont(font);
-	let locx = windowWidth*2/7;
-	let locy = windowHeight*6/8;
+	let locx = windowWidth*1/7;
+	let locy = windowHeight*7/8;
 
 	// D letter mask for paving
 	lettermask = createGraphics(windowWidth, windowHeight);
 	lettermask.textFont(font);
 	lettermask.textSize(letterSize/d);
 	lettermask.fill(255);
-	lettermask.text(letter, locx/d , locy/d);
+	lettermask.text('E', locx/d , locy/d);
 	lettermask.loadPixels();
 
 
-	for (var i = 0 ; i < lettermask.width ; i+= spread){
-		for (var j = 0 ; j < lettermask.height ; j+= spread){
+	for (var i = 0 ; i < lettermask.width ; i+=spread ){
+		for (var j = 0 ; j < lettermask.height ; j+=spread ){
 			index = i+j*lettermask.width*d;
 			var c = lettermask.pixels[index*4];
 			var b = brightness(c);
