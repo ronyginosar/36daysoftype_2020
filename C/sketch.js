@@ -1,6 +1,12 @@
 let vehicles = [];
 var font;
-let textSize = 400;
+let letterSize = 400;
+let letter = 'c';
+let spread = 3;
+let lettermask;
+let spots = [];
+let mwindowWidth;
+let mwindowHeight;
 
 function preload() {
 	font = loadFont('assets/Caladea-Bold.ttf');
@@ -9,6 +15,8 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
 	textFont(font);
+	let locx = windowWidth*2/7;
+	let locy = windowHeight*6/8;
 
 	// C letter
 	// stroke(255);
@@ -19,8 +27,8 @@ function setup() {
 	// text('C', 100, 700);
 
 	// C letter shape
-	cbounds = font.textToPoints('C', windowWidth/4, windowHeight*2/3, textSize);
-	for (var i = 0 ; i < cbounds.length ; i++){
+	cbounds = font.textToPoints('C', locx, locy, letterSize);
+	for (var i = 0 ; i < cbounds.length ; i+=spread){
 		var b = cbounds[i];
 		var vehicle = new Vehicle(b.x, b.y);
 		vehicles.push(vehicle);
@@ -29,6 +37,7 @@ function setup() {
 		// point(b.x, b.y);
 	}
 }
+
 
 function draw() {
   background(0);
