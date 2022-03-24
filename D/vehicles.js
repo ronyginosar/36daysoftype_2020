@@ -15,10 +15,10 @@ function Vehicle(x,y){
   this.vel = p5.Vector.random2D();
   this.acc = createVector();
   this.r = particlesize;
-  // this.maxspeed = 5; // desired vel is always max speed
-  // this.maxforce = 0.3;
-  this.maxspeed = 10; // desired vel is always max speed
-  this.maxforce = 1;
+  this.maxspeed = 5; // desired vel is always max speed
+  this.maxforce = 0.3;
+  // this.maxspeed = 7; // desired vel is always max speed
+  // this.maxforce = 0.5;
 }
 
 Vehicle.prototype.behaviors = function(){

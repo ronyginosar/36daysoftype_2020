@@ -1,16 +1,17 @@
 let vehicles = [];
-var font;
-let letterSize = 600;
-let letter = 'e';
-let spread = 15;
+var infont, outfont;
+let letterSize = 300;
+let letter = 'עשוהי';
+let spread = 10;
 let lettermask;
 let spots = [];
 let mwindowWidth;
 let mwindowHeight;
-let particlesize = 20; // little letters
+let particlesize = 10; // little letters
 
 function preload() {
-	font = loadFont('assets/Alegreya-ExtraBoldItalic.ttf');
+	infont = loadFont('assets/RAG-Yehoshua-1.0-Full.otf');
+	outfont = loadFont('assets/RAG-Yehoshua-1.0-Inline.otf');
 }
 
 function setup() {
@@ -19,16 +20,18 @@ function setup() {
 	// but lowes quality. so...
 	d = pixelDensity();
 	// console.log(d);
-	textFont(font);
-	let locx = windowWidth*1/7;
-	let locy = windowHeight*7/8;
+	textFont(infont); // little letter font
+	// let locx = windowWidth*1/7;
+	// let locy = windowHeight*7/8;
+	let locx = windowWidth*1/10;
+	let locy = windowHeight*3/4;
 
 	// D letter mask for paving
 	lettermask = createGraphics(windowWidth, windowHeight);
-	lettermask.textFont(font);
+	lettermask.textFont(outfont); // largeletter font
 	lettermask.textSize(letterSize/d);
 	lettermask.fill(255);
-	lettermask.text('E', locx/d , locy/d);
+	lettermask.text('עשוהי', locx/d , locy/d);
 	lettermask.loadPixels();
 
 
